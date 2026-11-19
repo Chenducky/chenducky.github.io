@@ -20,6 +20,7 @@ section.resume-section .resume-section-content { max-width: 68rem; }
 #experience { --bg: var(--ink);   --fg: var(--paper); --muted: #cfd1ca; --accent: var(--sky); --icon-bg: var(--sky); --icon-fg: var(--ink); }
 #education  { --bg: var(--sky);   --fg: var(--ink); --muted: #3a3b36; --accent: #2f5f86; --icon-bg: var(--ink); --icon-fg: var(--sky); }
 #skills     { --bg: var(--ink);   --fg: var(--paper); --muted: #cfd1ca; --accent: var(--sky); --icon-bg: var(--sky); --icon-fg: var(--ink); }
+#portfolio  { --bg: var(--sky);   --fg: var(--ink); --muted: #3a3b36; --accent: #2f5f86; --icon-bg: var(--ink); --icon-fg: var(--sky); }
 #interests  { --bg: var(--paper); --fg: var(--ink); --muted: #4a4b45; --accent: #3d6d92; --icon-bg: var(--ink); --icon-fg: var(--paper); }
 #awards     { --bg: var(--sky);   --fg: var(--ink); --muted: #3a3b36; --accent: #2f5f86; --icon-bg: var(--ink); --icon-fg: var(--sky); }
 
@@ -153,4 +154,25 @@ section.resume-section h2:hover { transform: translateX(8px); }
     max-height: 10rem;
     object-fit: cover;
     object-position: center top;
+}
+
+/* ===== 作品集：Bento Grid ===== */
+.bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; gap: 14px; }
+.bento-item { position: relative; margin: 0; overflow: hidden; border-radius: 18px; background: var(--ink); }
+.bento-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+.bento-item:hover img { transform: scale(1.06); }
+.bento-item figcaption { position: absolute; inset: auto 0 0 0; padding: 2.2rem 1rem .9rem; color: #fff;
+    background: linear-gradient(to top, rgba(18,18,17,.88), rgba(18,18,17,0)); }
+.bento-item figcaption h3 { color: #fff !important; font-size: 1.05rem; margin: 0 0 .15rem; text-transform: none; font-weight: 700; }
+.bento-item figcaption p { color: #e4e6e0 !important; font-size: .82rem; margin: 0; line-height: 1.4; }
+.b-card  { grid-column: 1;     grid-row: 1 / span 2; }
+.b-house { grid-column: 2 / span 2; grid-row: 1 / span 2; }
+.b-splash{ grid-column: 4;     grid-row: 1 / span 2; }
+.b-coke  { grid-column: 1 / span 2; grid-row: 3; }
+.b-scifi { grid-column: 3 / span 2; grid-row: 3; }
+@media (max-width: 767px) {
+    .bento-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 170px; }
+    .b-card, .b-splash { grid-column: auto; grid-row: span 2; }
+    .b-house { grid-column: 1 / span 2; grid-row: span 2; }
+    .b-coke, .b-scifi { grid-column: 1 / span 2; grid-row: span 1; }
 }
