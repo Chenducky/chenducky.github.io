@@ -165,3 +165,26 @@ section.resume-section h2:hover { transform: translateX(8px); }
 .bento-item figcaption p { color: #d5d8d0 !important; font-size: .9rem; margin: 0; line-height: 1.6; }
 @media (max-width: 991px) { .bento-grid { column-count: 2; } }
 @media (max-width: 575px) { .bento-grid { column-count: 1; } }
+
+/* 作品集互動：懸停浮起、圖片放大、標題彈跳 */
+.bento-item { transition: transform .35s ease, box-shadow .35s ease; }
+.bento-item:hover { transform: translateY(-8px); box-shadow: 0 18px 36px rgba(18,18,17,.28); }
+.bento-item img { transition: transform .6s ease; }
+.bento-item:hover img { transform: scale(1.05); }
+.bento-item:hover figcaption h3 { animation: bounce-pop 0.6s ease; }
+@media (prefers-reduced-motion: reduce) {
+    .bento-item, .bento-item img { transition: none; }
+    .bento-item:hover, .bento-item:hover img { transform: none; }
+}
+
+/* ===== 背景紋理：細緻顆粒質感（隱約、不干擾閱讀）===== */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1040;
+    pointer-events: none;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-size: 160px 160px;
+}
